@@ -36,22 +36,12 @@ defaults
 
 frontend  korantengtony.tech
         bind *:80
-        bind *:443 ssl crt /etc/haproxy/certs/www.korantengtony.tech.pem        redirect scheme https if !{ ssl_fc }
+        bind *:443 ssl crt /etc/haproxy/certs/www.korantengtony.tech.pem
+        redirect scheme https if !{ ssl_fc }
         mode http
-        default_backend web_servers
+        default_backend korantengtony
 
-backend web_servers
-        balance roundrobin
-        server 189923-web-01 34.229.186.226:80 check
-        server 189923-web-02 100.26.177.78:80 check
-
-
-frontend  korantengtony
-        bind *:80
-        mode http
-        default_backend tonykoranteng
-
-backend tonykoranteng
+backend korantengtony
         balance roundrobin
         server 189923-web-01 34.229.186.226:80 check
         server 189923-web-02 100.26.177.78:80 check
