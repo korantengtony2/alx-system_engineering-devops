@@ -37,8 +37,8 @@ defaults
 frontend  korantengtony.tech
         bind *:80
         bind *:443 ssl crt /etc/haproxy/certs/www.korantengtony.tech.pem
-        redirect scheme https if !{ ssl_fc }
-        mode http
+     	http-request redirect scheme https code 301 if !{ ssl_fc }
+	mode http
         default_backend korantengtony
 
 backend korantengtony
