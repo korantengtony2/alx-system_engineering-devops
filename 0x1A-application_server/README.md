@@ -1,1 +1,1 @@
-Application Server
+Web Application Server Project
